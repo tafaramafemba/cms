@@ -1,0 +1,309 @@
+/* General Table Styling */
+.table-custom {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 16px;
+    text-align: left;
+    box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+/* Table Header */
+.table-custom th {
+    background-color: #650015;
+    color: #fff;
+    padding: 12px 15px;
+    text-transform: uppercase;
+    border: none;
+    text-align: center;
+}
+
+/* Table Rows */
+.table-custom td {
+    background-color: #f8f9fa;
+    color: #333;
+    padding: 12px 15px;
+    border: none;
+}
+
+/* Hover Effect for Rows */
+.table-custom tr:hover td {
+    background-color: #f1f1f1;
+}
+
+/* First Column Radius Adjustment */
+.table-custom tr:first-child th:first-child {
+    border-top-left-radius: 10px;
+}
+
+.table-custom tr:first-child th:last-child {
+    border-top-right-radius: 10px;
+}
+
+/* Last Row Radius Adjustment */
+.table-custom tr:last-child td:first-child {
+    border-bottom-left-radius: 10px;
+}
+
+.table-custom tr:last-child td:last-child {
+    border-bottom-right-radius: 10px;
+}
+
+/* Specific width for the Actions column */
+.table-custom td:last-child {
+    width: 150px; /* Adjust the width as needed */
+    white-space: nowrap; /* Prevent wrapping of the icons */
+}
+
+.table-custom tr {
+    border: none;
+}
+
+/* Ensure buttons align properly */
+.table-custom td {
+    text-align: center; /* Center the icons in the column */
+}
+
+/* Action Buttons in Table (edit, transact, delete) */
+.table-custom td a,
+.table-custom td form {
+    display: inline-block;
+    margin-right: 10px;  /* Space between the buttons */
+}
+
+.btn-export-csv {
+    padding: 10px 15px;
+    background-color: #007bff;
+    border-radius: 8px;
+    color: white;
+    text-decoration: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.btn-export-csv:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px); /* Lift effect */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Button styling for import CSV */
+.btn-import-csv {
+    padding: 10px 15px;
+    background-color: #20C997;
+    border-radius: 8px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.btn-import-csv:hover {
+    background-color: #158f6b;
+    transform: translateY(-2px); /* Lift effect */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* File input styling */
+.file-input {
+    padding: 10px;
+    background-color: #f8f9fa;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    margin-right: 10px;
+}
+
+/* Edit Button */
+.table-link-edit {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.table-link-edit:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px); /* Lift effect */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Transact Button */
+.table-link-transact {
+    background-color: #20C997;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.table-link-transact:hover {
+    background-color: #158f6b;
+    transform: translateY(-2px); /* Lift effect */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Delete Button */
+.btn-delete {
+    background-color: #dc3545;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.btn-delete:hover {
+    background-color: #c82333;
+    transform: translateY(-2px); /* Lift effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Styling for Primary Button (e.g., Export Button) */
+.btn-primary {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    background-color: #f97115;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.collected-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.actions {
+    text-align: left; /* Aligns all contents of the actions container to the left */
+  }
+
+  /* Align the contents inside the actions-container div to the left */
+.actions-container {
+    text-align: left;
+    display: block; /* Ensures the div behaves as a block element */
+  }
+  
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px); /* Lift effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Styling for Success Button (e.g., Import Button) */
+.btn-success {
+    background-color: #20C997;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.btn-success:hover {
+    background-color: #158f6b;
+    transform: translateY(-2px); /* Lift effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-add-user {
+    padding: 10px 15px;
+    background-color: #007bff;
+    border-radius: 8px;
+    color: white;
+    text-decoration: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.btn-add-user:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px); /* Lift effect */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.table-link-show {
+    color: #20C997;
+    font-size: 18px;
+    margin: 0 10px;
+    color: #343a40; /* Default icon color */
+    transition: color 0.3s ease;
+    cursor: pointer;
+  }
+  
+  /* Hover effect for all action icons */
+  .table-link-show:hover {
+    color: #28a745;
+  }
+
+.text-field {
+    /* width: 100%; */
+    padding: 12px 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    transition: all 0.3s ease-in-out;
+}
+
+.text-field:focus {
+    border-color: #007bff;
+    transform: translateY(-2px); /* Lift effect */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.button-size {
+    width: 31px; /* Adjust the width as needed */
+    height: 31px; /* Adjust the height as needed */
+    padding: 0;
+  }
+
+  .boat-margin {
+    margin-top: 20px;
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  .margin-add {
+    margin-right: 10px;
+  }
+
+  .search-form {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    /* margin-top: 20px; */
+  }
+
+/* Responsive Table Design */
+@media (max-width: 768px) {
+    .table-custom {
+        font-size: 14px;
+    }
+    .table-custom th,
+    .table-custom td {
+        padding: 8px;
+    }
+}
+

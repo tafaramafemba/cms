@@ -1,0 +1,46 @@
+<%= stylesheet_link_tag "forms.css", "data-turbo-track": "reload" %>
+<%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+
+
+<div class="form-details">
+    <% if @package.payment_status == 'unpaid' %>
+    
+    <div class="payment-banner">
+        <div class="attention-icon">⚠️</div>
+        <p><strong>Collection Unavailable</strong> until payment is made.</p>
+        <%= button_to "Mark as Paid", 
+        update_payment_status_package_path(@package, package: { payment_status: 'paid' }), 
+        method: :put, 
+        class: "mark-paid-btn" %>
+    </div>
+
+    <% elsif @package.status == 'sent' %>
+    <div class="collection-banner">
+        <%= form_with url: process_collection_packages_path(tracking_number: @package.tracking_number), method: :post, local: true do |form| %>
+        <div class="form-group">
+        <%= form.label :collection_pin, "Enter Collection PIN", class: 'form-label' %>
+        <%= form.text_field :collection_pin, class: "form-control form-input", style: "width: 50%;", required: true %>
+        </div>
+        <%= form.submit "Verify and Collect", class: "marg form-submit" %>
+        <% end %>
+    </div>
+    <% elsif @package.status == 'collected' %> <!-- Handle collected status here -->
+        <div class="collection-banner">
+            <p><strong>Collection Status:</strong> Collected</p>
+       </div>
+    <% end %>
+
+    <!-- Package details -->
+    <p><strong>Origin City: </strong><%= @package.origin_city.name %></p>
+    <p><strong>Destination City: </strong><%= @package.destination_city.name %></p>
+    <p><strong>Category: </strong> <%= @package.category&.name || "No category assigned" %></p>
+    <p><strong>Weight: </strong> <%= @package.weight %> grams</p>
+    <p><strong>Cost: </strong> $<%= @package.cost %></p>
+    <p><strong>Status: </strong> <%= @package.status %></p>
+    <p><strong>Sender: </strong> <%= @package.sender.name %></p>
+    <p><strong>Receiver: </strong> <%= @package.receiver.name %></p>
+    <p><strong>Receiver ID: </strong> <%= @package.receiver.id_number %></p>
+    <p><strong>Payment Method: </strong> <%= @package.payment_method %></p>
+    <p><strong>Payment Status: </strong> <%= @package.payment_status %></p>
+    <p><strong>Tracking Number: </strong> <%= @package.tracking_number %></p>
+</div>

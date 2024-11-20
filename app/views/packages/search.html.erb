@@ -1,0 +1,27 @@
+<%= form_with url: process_collection_packages_path, method: :post do |form| %>
+  <div>
+    <%= form.label :tracking_number, "Enter Tracking Number" %>
+    <%= form.text_field :tracking_number, required: true %>
+    <%= form.submit "Search" %>
+  </div>
+<% end %>
+
+<% if @package %>
+  <p>Tracking Number: <%= @package.tracking_number %></p>
+  <p>Status: <%= @package.status %></p>
+
+  <% if @package.status == 'sent' %>
+    <%= form_with url: process_collection_packages_path, method: :post do |form| %>
+      <%= form.hidden_field :tracking_number, value: @package.tracking_number %>
+      <div>
+        <%= form.label :collection_pin, "Enter Collection Pin" %>
+        <%= form.text_field :collection_pin, required: true %>
+      </div>
+      <%= form.submit "Process Collection" %>
+    <% end %>
+  <% else %>
+    <p>This package has already been collected.</p>
+  <% end %>
+<% else %>
+  <p>No package found with that tracking ID.</p>
+<% end %>

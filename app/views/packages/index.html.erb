@@ -1,0 +1,66 @@
+<%= stylesheet_link_tag "table_design", "data-turbo-track": "reload" %>
+<%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+
+
+<div class="title-container">
+<%= link_to 'Send New Package', new_package_path, class: "btn btn-primary" %>
+<%= form_with url: packages_path, method: :get, local: true, class: "search-form" do |form| %>
+  <div class="form-group mt-3">
+    <%= form.text_field :tracking_number, value: params[:tracking_number], placeholder: "Enter Tracking Number", class: "text-field" %>
+  </div>
+
+  <div>
+      <%= label_tag :start_date, "Start Date" %>
+      <%= date_field_tag :start_date, params[:start_date], class: "text-field" %>
+    </div>
+
+    <div>
+      <%= label_tag :end_date, "End Date" %>
+      <%= date_field_tag :end_date, params[:end_date], class: "text-field" %>
+    </div>
+
+  <%= form.submit "Search", class: "btn btn-primary" %>
+<% end %>
+</div>
+
+
+
+<table class="table-custom">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Category</th>
+      <th>Weight (grams)</th>
+      <th>Cost</th>
+      <th>Sender</th>
+      <th>Receiver</th>
+      <th>Payment Method</th>
+      <th>Payment Status</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @packages.each do |package| %>
+      <tr>
+        <td><%= package.created_at.in_time_zone('Africa/Harare').strftime('%Y-%m-%d') %></td>
+        <td><%= package.category&.name || "No category assigned" %></td>
+        <td><%= package.weight %></td>
+        <td><%= package.cost %></td>
+        <td><%= package.sender.name %></td>
+        <td><%= package.receiver.name %></td>
+        <td><%= package.payment_method %></td>
+        <td><%= package.payment_status %></td>
+        <td class="actions">
+        <div class="actions-container">
+            <%= link_to 'View', package_path(package), class: "table-link-show" %>
+            <% if package.status == 'sent' %>
+            <%= link_to 'Process Collection', package_path(package), class: 'btn btn-primary' %>
+            <% else %>
+            <%= content_tag :span, "Collected", class: "collected-btn" %>
+            <% end %>
+        </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

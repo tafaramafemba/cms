@@ -1,0 +1,82 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.title-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.payment-banner {
+    max-width: 600px;
+    margin: 10px auto;
+    padding: 15px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.5s ease-in-out;
+    transition: opacity 0.3s ease-in-out;
+    background-color: #f8d7da;
+    border-left: 4px solid #dc3545;
+    color: #721c24;
+  }
+  
+  .attention-icon {
+    font-size: 24px;
+    color: #ff4d4d; /* Match icon color to border for consistency */
+    margin-right: 10px;
+  }
+  
+  .payment-banner p {
+    flex-grow: 1;
+    margin: 0;
+    font-weight: bold;
+  }
+  
+  .mark-paid-btn {
+    background-color: #4caf50; /* Green button to mark as paid */
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .mark-paid-btn:hover {
+    background-color: #45a049;
+  }
+  
+  .collection-banner {
+    max-width: 600px;
+    margin: 10px auto;
+    padding: 15px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center; /* Center text and elements inside */
+    box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 15px;    animation: fadeIn 0.5s ease-in-out;
+    transition: opacity 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column; /* Arrange elements in a column */
+    align-items: center; /* Center align elements within the div */
+    /* Uncomment for styling, if desired
+    background-color: #f8d7da;
+    border-left: 4px solid #dc3545;
+    color: #721c24;
+    */
+}
+
+.collection-banner .form-group,
+.collection-banner .form-submit {
+    width: 100%; /* Make input and button stretch to banner's width */
+    max-width: 300px; /* Limit width of inputs and button */
+    margin: 10px auto; /* Center items */
+}

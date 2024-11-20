@@ -1,0 +1,26 @@
+<%= stylesheet_link_tag "table_design.css", "data-turbo-track": "reload" %>
+<%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+
+<%= link_to "Add New City", new_city_path, class: "btn btn-primary" %>
+
+<table class="table-custom">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Collection Point Address</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @cities.each do |city| %>
+      <tr>
+        <td><%= city.name %></td>
+        <td><%= city.collection_point_address %></td>
+        <td>
+          <%= link_to "Edit", edit_city_path(city), class: 'btn btn-primary' %>
+          <%= button_to "Delete", city_path(city), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn-delete' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,36 @@
+<%= stylesheet_link_tag "forms.css", "data-turbo-track": "reload" %>
+<%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+
+
+
+
+<div class="form-details">
+    <%= form_with(model: category, local: true) do |form| %>
+    <div>
+        <%= form.label :name, 'Category Name', class: 'form-label' %>
+        <%= form.text_field :name, class: 'form-input', required: true %>
+    </div>
+
+    <div>
+        <%= form.label :base_price, 'Base Price (per gram)', class: 'form-label' %>
+        <%= form.number_field :base_price, step: 0.01, min: 0, class: 'form-input', required: true %>
+    </div>
+
+    <div>
+        <%= form.label :minimum_cost, 'Minimum Total Cost', class: 'form-label' %>
+        <%= form.number_field :minimum_cost, step: 0.01, min: 0, class: 'form-input', required: true %>
+    </div>
+
+    <div>
+        <%= form.label :additional_cost_per_gram, 'Additional Cost Per Gram', class: 'form-label' %>
+        <%= form.number_field :additional_cost_per_gram, step: 0.01, min: 0, class: 'form-input', required: true %>
+    </div>
+
+    <div>
+    <%= form.label :fee_percentage, 'Fee Percentage', class: 'form-label' %>
+    <%= form.number_field :fee_percentage, step: 0.01, class: 'form-input', required: true %>
+    </div>
+
+<%= form.submit 'Submit', class: 'form-submit' %>
+    <% end %>
+</div>

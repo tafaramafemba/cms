@@ -1,0 +1,57 @@
+/* Flash Notification Container */
+.notice, .alert {
+    max-width: 600px;
+    margin: 10px auto;
+    padding: 15px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.5s ease-in-out;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  /* Success/Notice Flash Message */
+  .notice {
+    background-color: #e0f7ef;
+    border-left: 4px solid #20C997;
+    color: #155e54;
+  }
+  
+  /* Error/Alert Flash Message */
+  .alert {
+    background-color: #f8d7da;
+    border-left: 4px solid #dc3545;
+    color: #721c24;
+  }
+  
+  /* Icon Styling */
+  .notice::before, .alert::before {
+    content: '';
+    display: inline-block;
+    margin-right: 10px;
+    font-size: 18px;
+    color: inherit;
+  }
+  
+  .notice::before {
+    content: '✔'; /* Notice icon */
+  }
+  
+  .alert::before {
+    content: '⚠'; /* Alert icon */
+  }
+  
+  /* Fade In Animation */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  /* Hover and Focus Effects */
+  .notice:hover, .alert:hover {
+    opacity: 0.9;
+  }
+  

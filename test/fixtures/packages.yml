@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  category: MyString
+  weight: 9.99
+  cost: 9.99
+  sender_id: 1
+  receiver_id: 1
+  status: MyString
+
+two:
+  category: MyString
+  weight: 9.99
+  cost: 9.99
+  sender_id: 1
+  receiver_id: 1
+  status: MyString

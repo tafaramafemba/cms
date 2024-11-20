@@ -1,0 +1,154 @@
+<%= stylesheet_link_tag "forms.css", "data-turbo-track": "reload" %>
+<%= stylesheet_link_tag "table_design", "data-turbo-track": "reload" %>
+<%= stylesheet_link_tag "modal", "data-turbo-track": "reload" %>
+<%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+
+
+
+<%= form_with model: @package, class: 'form-group', local: true do |form| %>
+<div class="form-details">
+  <div>
+    <%= form.label :origin_city_id, class: 'form-label' %>
+    <%= form.collection_select :origin_city_id, City.all, :id, :name, { prompt: "Select origin city" }, class: 'form-select', required: true %>
+  </div>
+
+  <div>
+    <%= form.label :destination_city_id, class: 'form-label' %>
+    <%= form.collection_select :destination_city_id, City.all, :id, :name, { prompt: "Select destination city" }, class: 'form-select', required: true %>
+  </div>
+    <div>
+    <%= form.label :category, class: 'form-label' %>
+    <%= form.collection_select :category_id, Category.all, :id, :name, { prompt: "Select a category" }, id: 'category_select', class: 'form-select', required: true %>
+  </div>
+
+    <!-- Toggle for choosing weight or amount -->
+    <div>
+      <label>
+        <input type="radio" name="toggle" value="weight" id="toggle-weight" checked>
+        Enter Weight
+      </label>
+      <label>
+        <input type="radio" name="toggle" value="amount" id="toggle-amount">
+        Enter Amount
+      </label>
+    </div>
+
+    <!-- Weight Input Field (visible by default) -->
+    <div id="weight-container">
+      <%= form.label :weight, "Weight (grams)", class: 'form-label' %>
+      <%= form.number_field :weight, step: 0.01, value: 0.00 , id: 'weight-input', class: 'form-input' %>
+    </div>
+
+    <!-- Amount Input Field (hidden by default) -->
+    <div id="amount-container" style="display: none;">
+      <%= form.label :amount, "Amount ($)", class: 'form-label' %>
+      <%= form.number_field :amount, step: 0.01, value: 0.00, id: 'amount-input', class: 'form-input' %>
+    </div>
+
+  
+
+  <%= form.hidden_field :cost, id: 'package-cost' %> <!-- Hidden field for submitting the cost -->
+  <!-- Sender Selection -->
+  <div>
+    <%= form.label :sender_id, "Sender", class: 'form-label' %>
+    <%= form.collection_select :sender_id, User.all, :id, :name, { prompt: "Select an existing sender" }, class: 'form-select' %>
+    <%= link_to "Create a new sender", "#", id: "new-sender-link", class: 'marg btn-primary' %>
+  </div>
+
+  <!-- New Sender Form (Initially Hidden) -->
+  <div id="new-sender-form" style="display: none; margin-top: 10px;">
+    <%= form.label :new_sender_name, "New Sender Name", class: 'form-label' %>
+    <%= form.text_field :new_sender_name, class: 'form-input' %>
+
+    <%= form.label :new_sender_id_number, "New Sender ID Number", class: 'form-label' %>
+    <%= form.text_field :new_sender_id_number, placeholder: "example: 63-2016561 A87", class: 'form-input' %>
+
+    <%= form.label :new_sender_phone, "New Sender Phone", class: 'form-label' %>
+    <%= form.telephone_field :new_sender_phone, placeholder: "example: 263772146807", class: 'form-input' %>
+
+    <%= form.label :new_sender_address, "New Sender Address", class: 'form-label' %>
+    <%= form.text_field :new_sender_address, class: 'form-input' %>
+  </div>
+
+  <div>
+    <%= form.label :receiver_id, class: 'form-label' %>
+    <%= form.collection_select :receiver_id, User.all, :id, :name, { prompt: "Select an existing receiver" }, class: 'form-select' %>
+    <%= link_to "Create a new receiver", "#", id: "new-receiver-link", class: 'marg btn-primary' %>
+  </div>
+
+    <!-- New Sender Form (Initially Hidden) -->
+  <div id="new-receiver-form" style="display: none; margin-top: 10px;">
+    <%= form.label :new_receiver_name, "New Receiver Name", class: 'form-label' %>
+    <%= form.text_field :new_receiver_name, class: 'form-input' %>
+
+    <%= form.label :new_receiver_id_number, "New Receiver ID Number", class: 'form-label' %>
+    <%= form.text_field :new_receiver_id_number, placeholder: "example: 63-2016561 A87", class: 'form-input' %>
+
+    <%= form.label :new_receiver_phone, "New Receiver Phone", class: 'form-label' %>
+    <%= form.telephone_field :new_receiver_phone, placeholder: "example: 263772146807", class: 'form-input' %>
+
+    <%= form.label :new_receiver_address, "New Receiver Address", class: 'form-label' %>
+    <%= form.text_field :new_receiver_address, class: 'form-input' %>
+  </div>
+
+    <div>
+    <%= form.label :payment_method, class: 'form-label' %>
+    <%= form.select :payment_method, options_for_select([["Cash", "Cash"], ["Swipe", "Swipe"]], @package.payment_method), { prompt: "Select payment method" }, class: 'form-select', required: true %>
+  </div>
+
+  <div>
+    <%= form.label :payment_status, class: 'form-label' %>
+    <%= form.select :payment_status, Package.payment_statuses.keys.map { |status| [status.titleize, status] }, { prompt: "Select payment status" }, class: 'form-input', required: true %>
+  </div>
+
+  <%= form.submit 'Send Package', class: 'form-submit' %>
+<% end %>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+  const weightContainer = document.getElementById("weight-container");
+  const amountContainer = document.getElementById("amount-container");
+  const toggleWeight = document.getElementById("toggle-weight");
+  const toggleAmount = document.getElementById("toggle-amount");
+
+  // Function to toggle visibility based on selected radio button
+  function toggleFields() {
+    if (toggleWeight.checked) {
+      weightContainer.style.display = "block";
+      amountContainer.style.display = "none";
+    } else if (toggleAmount.checked) {
+      weightContainer.style.display = "none";
+      amountContainer.style.display = "block";
+    }
+  }
+
+  // Initial call to set correct visibility
+  toggleFields();
+
+  // Add event listeners to toggle radio buttons
+  toggleWeight.addEventListener("change", toggleFields);
+  toggleAmount.addEventListener("change", toggleFields);
+});
+</script>
+
+<!-- Confirmation Modal -->
+<div id="confirmation-modal" style="display: none;" class="modal">
+  <div class="modal-content">
+    <h2>Confirm Package Details</h2>
+    <p><strong>Origin City:</strong> <span id="confirm-origin-city"></span></p>
+    <p><strong>Destination City:</strong> <span id="confirm-destination-city"></span></p>
+    <p><strong>Category:</strong> <span id="confirm-category"></span></p>
+    <p><strong>Weight:</strong> <span id="confirm-weight"></span> grams</p>
+    <p><strong>Amount:</strong> $<span id="confirm-amount"></span></p>
+    <p><strong>Total Cost:</strong> $<span id="confirm-total-cost"></span></p>
+    
+
+    <button id="confirm-submit" class="btn btn-primary">Confirm</button>
+    <button id="cancel-submit" class="btn btn-delete">Cancel</button>
+  </div>
+</div>
+
+
+<%= javascript_include_tag 'packages' %>
+<%= javascript_include_tag 'modal'%>
