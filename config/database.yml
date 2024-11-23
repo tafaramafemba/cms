@@ -33,7 +33,5 @@ production:
   pool: 5
   username: handhand_admin
   password: CMS2024!@#
-  database: handhand_cms
+  database: handhand_CMS
   host: localhost
-
-
