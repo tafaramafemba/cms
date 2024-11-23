@@ -1,4 +1,5 @@
 source "https://rubygems.org"
+ruby '3.2.0'
 
 # Use Rails 7.0.x for compatibility with Ruby 3.1.8
 gem "rails", "~> 7.0"
@@ -20,7 +21,7 @@ gem "jbuilder"
 # Gemfile
 gem 'devise'
 gem 'faraday'
-gem 'zeitwerk', '~> 2.5'  # Ensure compatibility with Ruby 3.1.8
+gem 'zeitwerk'
 gem 'mysql2'
 gem 'pg', group: :production  # PostgreSQL for production
 gem 'rails_12factor', group: :production  # Heroku logging & asset handling
