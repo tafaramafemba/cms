@@ -22,6 +22,9 @@ gem 'devise'
 gem 'faraday'
 gem 'zeitwerk', '~> 2.5'  # Ensure compatibility with Ruby 3.1.8
 gem 'mysql2'
+gem 'pg', group: :production  # PostgreSQL for production
+gem 'rails_12factor', group: :production  # Heroku logging & asset handling
+
 # Ensure compatibility with Ruby 3.1.8
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]

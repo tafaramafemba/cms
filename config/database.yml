@@ -27,11 +27,17 @@ test:
 #
 # Similarly, if you deploy your application as a Docker container, you must
 # ensure the database is located in a persisted volume.
+# production:
+#   adapter: mysql2
+#   encoding: utf8
+#   pool: 5
+#   username: handhand_admin
+#   password: CMS2024!@#
+#   database: handhand_CMS
+#   host: localhost
+
 production:
-  adapter: mysql2
-  encoding: utf8
-  pool: 5
-  username: handhand_admin
-  password: CMS2024!@#
-  database: handhand_CMS
-  host: localhost
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  database: <%= ENV['DATABASE_URL'] %>
