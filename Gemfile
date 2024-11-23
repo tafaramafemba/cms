@@ -1,7 +1,10 @@
 source "https://rubygems.org"
 
+ruby "3.3.5"
+
 # Use Rails 7.0.x for compatibility with Ruby 3.1.8
 gem "rails", "~> 7.0"
+
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
