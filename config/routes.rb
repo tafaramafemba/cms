@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :admins
+  devise_for :admins, controllers: {
+    registrations: 'admins/registrations'
+}
   get "categories/index"
   get "categories/new"
   get "categories/create"
