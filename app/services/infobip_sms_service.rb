@@ -17,7 +17,7 @@ class InfobipSmsService
     body = {
       "messages": [
         {
-          "from": "InfoSMS",
+          "from": "H2H Couriers",
           "destinations": [
             {
               "to": to
